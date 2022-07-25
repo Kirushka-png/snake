@@ -1,25 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Game from './Components/Game/Game';
+import Menu from './Components/Game/Menu';
+import Body from './Main';
 
-function App() {
+const App = () => {
+
+  const [gameOn, setGameOn] = useState<boolean>(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Body>
+      {!gameOn ? <Menu play={() => setGameOn(true)}/> : <Game gameover={() => setGameOn(false)}/>}
+    </Body>
   );
 }
 
